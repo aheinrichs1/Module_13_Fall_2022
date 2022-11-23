@@ -23,6 +23,9 @@ def create_db_and_table():
 def add_person():
     first_name = person_first_name.get()
     last_name = person_last_name.get()
+    if first_name == '' or last_name == '':
+        print('Please fill in all fields')
+        raise ValueError
     p = (first_name, last_name)
     create_person(conn, p)
 
@@ -32,10 +35,15 @@ def add_student():
     last_name = student_last_name.get()
     major = student_major.get()
     sdate = student_startdate.get()
+    if first_name == '' or last_name == '' or major == '' or sdate == '':
+        print('Please fill in all fields')
+        raise ValueError
     cur = conn.cursor()
     cur.execute("SELECT id FROM person WHERE firstname = '{}' AND lastname = '{}'".format(first_name, last_name))
     pid = cur.fetchone()
-
+    if pid is None:
+        print('No Person found, Please try again')
+        raise ValueError
     s = (pid[0], major, sdate)
     create_student(conn, s)
 
