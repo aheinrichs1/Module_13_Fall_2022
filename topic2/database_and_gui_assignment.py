@@ -3,7 +3,7 @@ Program: database_and_gui_assignment.py
 Author: Alex Heinrichs
 Date Created: 11/21/2022
 
-Connecting to a database with a trash add-on called tkinter
+Connecting to a database with a primitive GUI add-on called tkinter
 """
 import tkinter
 import sqlite3
